@@ -105,8 +105,8 @@
     <div class="container">
         <div class="topnav" id="myTopnav">
             <a href="#home" class="active">Home</a>
-            <a href="index.html">Next Page</a>
-            <a href="#contact">Contact</a>
+            <a href="index.html">Swap Pages</a>
+            <a onclick="myRefFun()">Clear</a>
             <a href="javascript:void(0);" class="icon" onclick="myNavFun()">
               <i class="fa fa-bars"></i>
             </a>
@@ -115,7 +115,7 @@
          Input your Credentials to Calculate result
       </h2>
       <div>
-        <h1 style="text-align: center;">Formula Second</h1>
+        <h1 style="text-align: center;"> Second Formula</h1>
       </div>
       <form id="frm1">
         <label for="input1">Hp:</label>
@@ -150,6 +150,10 @@
     m.className = "topnav";
   }
 }
+//refresh function
+function myRefFun(){
+  document.getElementById("frm1").reset();
+}
 //form submit Process
 function myFunction() {
  var x = document.getElementById("frm1");
@@ -163,7 +167,6 @@ function myFunction() {
  var below= values[2]*values[3]*values[4]*values[1];
  var final=above/below;
  document.getElementById("rst").innerHTML = final;
- document.getElementById("frm1").reset();
 }
 </script>
 </html>

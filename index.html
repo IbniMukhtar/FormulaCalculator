@@ -98,15 +98,15 @@ div {
 <div class="container">
     <div class="topnav" id="myTopnav">
         <a href="#home" class="active">Home</a>
-        <a href="copyIndex.html">Next Page</a>
-        <a href="#contact">Contact</a>
+        <a href="copyIndex.html">Swap Pages</a>
+        <a onclick="myClearFunction()">Clear</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
           <i class="fa fa-bars"></i>
         </a>
       </div>
   <h2 style="color:#4CAF50;margin-top: 15px;"> Input your Credentials to Calculate result</h2>
   <div>
-    <h1 style="text-align: center;">Formula First</h1>
+    <h1 style="text-align: center;">First Formula</h1>
   </div>
   <form id="finalform">
     <label>Q_CB: </label>
@@ -166,7 +166,6 @@ const scalingFactor = 1e9;
 
 	result=result.toFixed(4);
   document.getElementById("rst").innerHTML = result;
-  document.getElementById("finalform").reset();
   //console.log(result);
   }
 //});
@@ -178,6 +177,10 @@ const scalingFactor = 1e9;
   } else {
     m.className = "topnav";
   }
+}
+//refresh function
+function myClearFunction(){
+  document.getElementById("finalform").reset();
 }
 </script>
 </html>
