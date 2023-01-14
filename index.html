@@ -4,11 +4,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
+  *{
+    margin: 0px;
+    padding: 0px;
+  }
+  form{
+    width: 60%;
+    margin-left: 20%;
+     margin-right: 20%;
+     display: inline-block;
+  }
 input[type=number], select {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
-  display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
@@ -28,7 +37,6 @@ input[type=button] {
 input[type=button]:hover {
   background-color: #45a049;
 }
-
 div {
   border-radius: 5px;
   background-color: #f2f2f2;
@@ -96,9 +104,9 @@ div {
           <i class="fa fa-bars"></i>
         </a>
       </div>
-  <h2 style="color:#4CAF50; margin-top: 15px;"> Input your Credentials to Calculate result</h2>
+  <h2 style="color:#4CAF50;margin-top: 15px;"> Input your Credentials to Calculate result</h2>
   <div>
-    <h1>Formula First</h1>
+    <h1 style="text-align: center;">Formula First</h1>
   </div>
   <form id="finalform">
     <label>Q_CB: </label>
@@ -120,38 +128,48 @@ div {
     <input type="button" value="Calculate" onclick="final()">
   </form>
   <div class="result"> 
-      <p style="font: size 20px;">Result: <span id="rst" style="color:red;font: size 20px;">   </span> </p>
+      <h2 style="text-align:center;">
+        <i class="fa fa-hourglass-end" aria-hidden="true"></i>Result: 
+        <span id="rst" style="color:red;"> </span> 
+      </h2>
   </div> 
 </div>
 </body>
 
 <script>
-  // console.log("helo");
-  //const form = document.querySelector("form");
-  //form.addEventListener("submit", function(event) {
-   // event.preventDefault();
    function final(){
     var x = document.getElementById("finalform");
-   var text = "";
+    var text = "";
     var i;
-    const values = [];
-        // console.log(x.elements);
+    const valuess = [];
     for (i = 0; i < x.length-1 ;i++) {
-      // console.log(x.elements[i]);
-      values[i]= x.elements[i].value;
+     valuess[i]= x.elements[i].value;
     }
-    const Q_CB = values[0];
-    const H_p =  values[1];
-    const H_f =  values[2];
-    const η_FM =  values[3];
-    const K_F =  values[4];
-    const H_wsz =  values[5];
-    const η_IWSZ =  values[6];
-    const K_N =  values[7]; 
-    const result = Q_CB / (H_p / (((H_f * η_FM) / K_F) + (H_wsz * η_IWSZ) / (K_F - K_N)) + K_F);
-    document.getElementById("rst").innerHTML = result;
-    document.getElementById("finalform").reset();
-    }
+/*for (i = 0; i < values.length ;i++) {
+   alert(values[i]);//= x.elements[i].value;
+  }
+*/
+const values = valuess.map(str => {
+  return Number(str);
+});
+const scalingFactor = 1e9;  
+  var Q_CB = values[0];
+  var H_p =  values[1];
+  var H_f =  values[2];
+  var η_FM =  values[3];
+  var K_F =  values[4];
+  var H_wsz =  values[5];
+  var η_IWSZ =  values[6];
+  var K_N =  values[7];
+
+  var result = Q_CB / (H_p / (((H_f * η_FM) / K_F) + (H_wsz * η_IWSZ) / (K_F - K_N)) + K_F);
+
+	result=result.toFixed(4);
+  document.getElementById("rst").innerHTML = result;
+  document.getElementById("finalform").reset();
+  //console.log(result);
+  }
+//});
   //});
   function myFunction() {
   var m = document.getElementById("myTopnav");

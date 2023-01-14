@@ -1,0 +1,69 @@
+
+<script>
+//const form = document.querySelector("form");
+//form.addEventListener("submit", function(event) {
+ // event.preventDefault();
+ function final(){
+  //alert("called");
+  
+  var x = document.getElementById("finalform");
+ var text = "";
+  var i;
+  const valuess = [];
+  for (i = 0; i < x.length-1 ;i++) {
+    valuess[i]= x.elements[i].value;
+  }
+/*for (i = 0; i < values.length ;i++) {
+   alert(values[i]);//= x.elements[i].value;
+  }
+*/
+const values = valuess.map(str => {
+  return Number(str);
+});
+const scalingFactor = 1e9;  
+  var Q_CB = values[0];
+  var H_p =  values[1];
+  var H_f =  values[2];
+  var η_FM =  values[3];
+  var K_F =  values[4];
+  var H_wsz =  values[5];
+  var η_IWSZ =  values[6];
+  var K_N =  values[7];
+  
+ 
+
+  var result = Q_CB / (H_p / (((H_f * η_FM) / K_F) + (H_wsz * η_IWSZ) / (K_F - K_N)) + K_F);
+
+	result=result.toFixed(4);
+  document.getElementById("rst").innerHTML = result;
+  document.getElementById("finalform").reset();
+  //console.log(result);
+  }
+//});
+
+</script>
+
+
+
+<form id="finalform">
+  <label>Q<sub style="vertical-align: sub; font-size: smaller;">CB</sub>: <input type="number" name="Q_CB"></label>
+  <br>
+  <label>H<sub style="vertical-align: sub; font-size: smaller;">p</sub>: <input type="number" name="H_p"></label>
+  <br>
+  <label>H<sub style="vertical-align: sub; font-size: smaller;">f</sub>: <input type="number" name="H_f"></label>
+  <br>
+  <label>η<sub style="vertical-align: sub; font-size: smaller;">FM</sub>: <input type="number" name="eta_FM"></label>
+  <br>
+  <label>K<sub style="vertical-align: sub; font-size: smaller;">F<sub>: <input type="number" name="K_F"></label>
+  <br>
+  <label>H<sub style="vertical-align: sub; font-size: smaller;">wsz</sub>: <input type="number" name="H_wsz"></label>
+  <br>
+  <label>η<sub style="vertical-align: sub; font-size: smaller;">WSZ</sub>: <input type="number" name="eta_IWSZ"></label>
+  <br>
+  <label>K<sub style="vertical-align: sub; font-size: smaller;">N</sub>: <input type="number" name="K_N"></label>
+  <br>
+  <input type="button" value="Calculate" onclick="final()">
+</form>
+<div class="result"> 
+		<p>Result: <span id="rst">   </span> </p>
+</div>
