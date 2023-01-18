@@ -109,8 +109,13 @@ div {
     <h1 style="text-align: center;">First Formula</h1>
   </div>
   <form id="finalform">
-    <label>Q_CB: </label>
-    <input type="number" name="Q_CB" placeholder="Q_CB:">
+    <label>Q_CB:C value: </label>
+    <input type="number" name="Q_CB: C value:" placeholder="Q_CB: C value">
+    <label>Q_CB:I value: </label>
+    <input type="number" name="Q_CB: I value:" placeholder="Q_CB: I value">
+    <label>Q_CB:A value: </label>
+    <input type="number" name="Q_CB: A value:" placeholder="Q_CB: A value">
+
     <label>H_p:</label>
     <input type="number" name="H_p" placeholder="H_p:">
     <label>H_f:</label>
@@ -153,14 +158,17 @@ const values = valuess.map(str => {
   return Number(str);
 });
 const scalingFactor = 1e9;  
-  var Q_CB = values[0];
-  var H_p =  values[1];
-  var H_f =  values[2];
-  var η_FM =  values[3];
-  var K_F =  values[4];
-  var H_wsz =  values[5];
-  var η_IWSZ =  values[6];
-  var K_N =  values[7];
+  var Q_CB_C = values[0];
+  var Q_CB_I = values[1];
+  var Q_CB_A = values[2];
+  var Q_CB = (Q_CB_C*Q_CB_I* Q_CB_A);
+  var H_p =  values[3];
+  var H_f =  values[4];
+  var η_FM =  values[5];
+  var K_F =  values[6];
+  var H_wsz =  values[7];
+  var η_IWSZ =  values[8];
+  var K_N =  values[9];
 
   var result = Q_CB / (H_p / (((H_f * η_FM) / K_F) + (H_wsz * η_IWSZ) / (K_F - K_N)) + K_F);
 
