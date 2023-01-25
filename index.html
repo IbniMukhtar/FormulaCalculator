@@ -7,13 +7,14 @@
   *{
     margin: 0px;
     padding: 0px;
+    box-sizing: border-box;
   }
-  form{
+  /* form{
     width: 60%;
     margin-left: 20%;
      margin-right: 20%;
      display: inline-block;
-  }
+  } */
 input[type=number], select {
   width: 100%;
   padding: 12px 20px;
@@ -93,6 +94,39 @@ div {
     text-align: left;
   }
 }
+
+.main-container{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.form-container{
+    width: 30%;
+}
+.image-container{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    width: 70%;
+}
+#formula-image{
+    /* width: 100%; */
+    /* object-fit: cover; */
+}
+@media screen and (max-width: 600px) {
+    .main-container{
+        display: flex;
+        flex-direction: column;
+    }
+    .form-container{
+        width: 100%;
+    }
+    .image-container{
+        width: 100%;
+    }
+}
+
 </style>
 <body>
 <div class="container">
@@ -108,36 +142,44 @@ div {
   <div>
     <h1 style="text-align: center;">First Formula</h1>
   </div>
-  <form id="finalform">
-    <label>Q_CB:C value: </label>
-    <input type="number" name="Q_CB: C value:" placeholder="Q_CB: C value">
-    <label>Q_CB:I value: </label>
-    <input type="number" name="Q_CB: I value:" placeholder="Q_CB: I value">
-    <label>Q_CB:A value: </label>
-    <input type="number" name="Q_CB: A value:" placeholder="Q_CB: A value">
-
-    <label>H_p:</label>
-    <input type="number" name="H_p" placeholder="H_p:">
-    <label>H_f:</label>
-    <input type="number" name="H_f" placeholder="H_p:">
-    <label>η_FM</label>
-    <input type="number" name="eta_FM" placeholder="H_f:">
-    <label>K_F:</label>
-    <input type="number" name="K_F" placeholder="K_F:">
-    <label>H_wsz:</label>
-    <input type="number" name="H_wsz" placeholder="H_wsz:">
-    <label>η_IWSZ:</label>
-    <input type="number" name="eta_IWSZ" placeholder="eta_IWSZ:">
-    <label>K_N:</label>
-    <input type="number" name="K_N" placeholder="K_N:">
-    <input type="button" value="Calculate" onclick="final()">
-  </form>
-  <div class="result"> 
-      <h2 style="text-align:center;">
-        <i class="fa fa-hourglass-end" aria-hidden="true"></i>Result: 
-        <span id="rst" style="color:red;"> </span> 
-      </h2>
-  </div> 
+<div class="main-container">
+    <div class="form-container">
+        <form id="finalform">
+            <label>Q_CB:I value: </label>
+            <input type="number" name="Q_CB: I value:" placeholder="Q_CB: I value">
+            <label>Q_CB:C value: </label>
+            <input type="number" name="Q_CB: C value:" placeholder="Q_CB: C value">
+            <label>Q_CB:A value: </label>
+            <input type="number" name="Q_CB: A value:" placeholder="Q_CB: A value">
+            
+            <label>H_p:</label>
+            <input type="number" name="H_p" placeholder="H_p:">
+            <label>H_f:</label>
+            <input type="number" name="H_f" placeholder="H_p:">
+            <label>η_FM</label>
+            <input type="number" name="eta_FM" placeholder="H_f:">
+            <label>K_F:</label>
+            <input type="number" name="K_F" placeholder="K_F:">
+            <label>H_wsz:</label>
+            <input type="number" name="H_wsz" placeholder="H_wsz:">
+            <label>η_IWSZ:</label>
+            <input type="number" name="eta_IWSZ" placeholder="eta_IWSZ:">
+            <label>K_N:</label>
+            <input type="number" name="K_N" placeholder="K_N:">
+            <input type="button" value="Calculate" onclick="final()">
+            </form>
+            <div class="result">
+                <h2 style="text-align:center;">
+                    <i class="fa fa-hourglass-end" aria-hidden="true"></i>Result:
+                    <span id="rst" style="color:red;"> </span>
+                </h2>
+            </div>
+    </div>
+    <div class="image-container">
+        <img id="formula-image" src="./image.png" />
+        <img src="./form1.jpeg">
+    </div>
+    </div>
 </div>
 </body>
 
